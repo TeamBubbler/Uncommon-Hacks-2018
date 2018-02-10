@@ -35,8 +35,6 @@ function requestMeme(memeInput) {
     req.onreadystatechange = function() { 
         if (req.readyState == 4 && req.status == 200) {
             memeUrl = processMeme(req.responseText);
-        } else {
-            console.log("Error with Imgur Request.");
         }
     }
     req.open('GET', request_url, true); // true for asynchronous     
@@ -51,6 +49,10 @@ function processMeme(response_text) {
         var json = JSON.parse(response_text);
         var rand = Math.floor(Math.random() * Math.floor(4));
 
-        return json["data"][rand]["images"][0]["link"];
+        if (json["data"][rand]["images"].length != 0) {
+            return json["data"][rand]["images"][0]["link"];
+        } else {
+            return 'http://s.quickmeme.com/img/a8/a8022006b463b5ed9be5a62f1bdbac43b4f3dbd5c6b3bb44707fe5f5e26635b0.jpg';
+        }
     }
 }
