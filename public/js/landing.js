@@ -1,4 +1,6 @@
 var api_key = '0588d7ce8da18e8';
+var query = 'pepe';
+var request_url = 'https://api.imgur.com/3/gallery/search/?q='+query;
 function requestAlbum() {
   var req = new XMLHttpRequest();
   
@@ -11,6 +13,7 @@ function requestAlbum() {
   }
   req.open('GET', request_url, true); // true for asynchronous     
   req.setRequestHeader('Authorization', 'Client-ID ' + api_key);
+  req.send(null);
 }
 function processRequest(response_text) {
   if (response_text == "Not found") {
