@@ -1,7 +1,10 @@
 var express = require("express");
 var app = express(),
     request = require("request"),
-    bodyParser = require("body-parser");
+    bodyParser = require("body-parser"),
+    XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+var memeUrl;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -13,8 +16,10 @@ app.get("/", function(req, res) {
 
 app.post("/meme/", function(req, res) {
     var memeInput = req.body.memeinput;
-    var memeUrl = requestMeme(memeInput);
-    res.render("meme", {memeUrl: memeUrl});
+    requestMeme(memeInput);
+    setTimeout(function() {
+        res.render("meme", {memeUrl: memeUrl});
+    }, 500);
 });
 
 app.listen(8000, function(req, res) {
@@ -29,7 +34,7 @@ function requestMeme(memeInput) {
     
     req.onreadystatechange = function() { 
         if (req.readyState == 4 && req.status == 200) {
-            return processMeme(req.responseText);
+            memeUrl = processMeme(req.responseText);
         } else {
             console.log("Error with Imgur Request.");
         }
@@ -46,7 +51,6 @@ function processMeme(response_text) {
         var json = JSON.parse(response_text);
         var rand = Math.floor(Math.random() * Math.floor(4));
 
-        return json["data"]["images"][rand]["link"];
+        return json["data"][rand]["images"][0]["link"];
     }
 }
-requestAlbum();
