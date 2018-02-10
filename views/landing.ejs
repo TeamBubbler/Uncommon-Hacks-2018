@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <h1>Something</h1>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hear the Meme</title>
+    <link rel="stylesheet" href="/css/landingpage.css" />
+  </head>
+  <body>
+    <div id="search-js">
+        <div class="home">
+            <h1 id="name"></h1>
+            <form method="POST" action="/home">
+                <input type="text" name="memeinput" autocomplete="off" placeholder="What meme do you want to hear?"/>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     <script src="/js/landing.js"></script>
-</body>
+  </body>
 </html>
