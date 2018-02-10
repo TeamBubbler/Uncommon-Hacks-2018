@@ -1,27 +1,20 @@
-var api_key = '0588d7ce8da18e8';
-var query = 'pepe';
-var request_url = 'https://api.imgur.com/3/gallery/search/?q='+query;
-function requestAlbum() {
-  var req = new XMLHttpRequest();
-  
-  req.onreadystatechange = function() { 
-     if (req.readyState == 4 && req.status == 200) {
-       processRequest(req.responseText);
-     } else {
-       console.log("Error with Imgur Request.");
-     }
-  }
-  req.open('GET', request_url, true); // true for asynchronous     
-  req.setRequestHeader('Authorization', 'Client-ID ' + api_key);
-  req.send(null);
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'hello': function() {
+      alert("hello");
+    },
+    'search *text': searchMeme,
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
 }
-function processRequest(response_text) {
-  if (response_text == "Not found") {
-    console.log("Imgur album not found.");
-  } else {
-    console.log(response_text);
-    // You got your response back!
-    // Do your thing here.
-  }
+
+function searchMeme(inputText) {
+  $("input").val(inputText);
+  $("form").submit();
 }
-requestAlbum();

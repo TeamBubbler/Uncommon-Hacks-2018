@@ -19,7 +19,7 @@ app.post("/meme/", function(req, res) {
     requestMeme(memeInput);
     setTimeout(function() {
         res.render("meme", {memeUrl: memeUrl});
-    }, 500);
+    }, 1000);
 });
 
 app.listen(8000, function(req, res) {
