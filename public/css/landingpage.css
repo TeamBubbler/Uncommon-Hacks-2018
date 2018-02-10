@@ -7,7 +7,6 @@
   box-sizing: border-box;
   font-family: 'Barlow Condensed', sans-serif;
 }
-
 #search-js {
   position: relative;
   width: 100%;
@@ -40,7 +39,7 @@ canvas.particles-js-canvas-el {
 h1{
   position: absolute;
   display: block;
-  top: 30%;
+  top: 45%;
   left: 50%;
   color: #fff;
   width: 700px;
@@ -50,22 +49,22 @@ h1{
   text-align: center;
   transform: translate(-50%,-50%);
 }
-
+input {
+  background:none
+}
 input[type="text"] {
-    border: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    border: 3px solid rgba(255,255,255,0.4);
     padding: 6px;
     width: 500px;
     top: 30px;
     left: 130px;
-    background: none;
     z-index: 1;
     position: absolute;
     display: block;
-    top: 50%;
+    top: 65%;
     left: 50%;
     margin: 0 auto;
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-size: 30px;
     font-weight: 100;
     text-align: center;
@@ -73,14 +72,14 @@ input[type="text"] {
 }
 
 ::placeholder {
-    color: rgb(255, 255, 255);
+    color: rgb(224, 207, 207);
     opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: #fff;
+   color: rgb(255, 255, 255);
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color: #fff;
+   color: rgb(255, 255, 255);
 }
