@@ -19,7 +19,6 @@ function cutImageUp() {
             imagePieces.push(canvas.toDataURL());
         }
     }
-
     for(var i = 0; i < imagePieces.length; i++){
         if (i % numColsToCut == 0) {
         var br = document.createElement('BR');
@@ -32,6 +31,20 @@ function cutImageUp() {
         div.appendChild( slicedImage );
     };
 }
+var synth = new Tone.FMSynth({
+    "modulationIndex" : 12.22,
+    "envelope" : {
+        "attack" : 0.01,
+        "decay" : 0.2
+    },
+    "modulation" : {
+        "type" : "square"
+    },
+    "modulationEnvelope" : {
+        "attack" : 0.2,
+        "decay" : 0.01
+    }
+}).toMaster();
 setTimeout(function() {
     var colors = [];
     var images = $('img');
