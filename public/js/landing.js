@@ -1,6 +1,6 @@
-particlesJS.load('particles-js','assets/particlesjs-config.json', function() {
-  console.log('callback - particles.js config loaded');
-});
+// particlesJS.load('particles-js','assets/particlesjs-config.json', function() {
+//   console.log('callback - particles.js config loaded');
+// });
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
