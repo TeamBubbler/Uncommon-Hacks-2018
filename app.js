@@ -22,7 +22,7 @@ app.post("/meme/", function(req, res) {
     }, 1000);
 });
 
-app.listen(process.env.PORT || 8080, function(req, res) {
+app.listen(process.env.PORT || 8000, function(req, res) {
     console.log("Ready for some dank memes on port  " + process.env.PORT);
 })
 
@@ -37,6 +37,10 @@ function requestMeme(memeInput) {
         .then(images => {
             var rand = Math.floor(Math.random() * Math.floor(images.length));
             memeUrl = images[rand]["url"];
+            while(images[rand]["width"] > 700) {
+                rand = Math.floor(Math.random() * Math.floor(images.length));
+                memeUrl = images[rand]["url"];
+            }
             console.log("rand = " + rand + "\n" + "memeUrl = " + memeUrl);
         });
 }
