@@ -85,3 +85,15 @@ img {
     background-color: grey;
 }
 
+a:link    {
+    /* Applies to all unvisited links */
+    text-decoration:  none;
+    color:            white;
+    font-size: 100px;
+} 
+a:visited {
+/* Applies to all visited links */
+text-decoration:  none;
+color:            white;
+font-size: 100px;
+} 
