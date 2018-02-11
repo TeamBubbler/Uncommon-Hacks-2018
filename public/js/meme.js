@@ -18,9 +18,21 @@ function cutImageUp() {
             context.drawImage(image, x * widthOfOnePiece, y * heightOfOnePiece, widthOfOnePiece, heightOfOnePiece, 0, 0, canvas.width, canvas.height);
             imagePieces.push(canvas.toDataURL());
         }
-<<<<<<< HEAD
-	}
+    }
+    for(var i = 0; i < imagePieces.length; i++){
+        if (i % 5 == 0) {
+        var br = document.createElement('BR');
+        var div = document.getElementById('img-wrapper');
+        div.appendChild( br );
+        }
+        var slicedImage = document.createElement('img')
+        slicedImage.src = imagePieces[i];
+        var div = document.getElementById('img-wrapper');
+        div.appendChild( slicedImage );
+
+    };
 }
+
 var synth = new Tone.FMSynth({
     "modulationIndex" : 12.22,
     "envelope" : {
@@ -35,22 +47,3 @@ var synth = new Tone.FMSynth({
         "decay" : 0.01
     }
 }).toMaster();
-
-
-=======
-    }
-
-    for(var i = 0; i < imagePieces.length; i++){
-        if (i % 5 == 0) {
-        var br = document.createElement('BR');
-        var div = document.getElementById('img-wrapper');
-        div.appendChild( br );
-        }
-        var slicedImage = document.createElement('img')
-        slicedImage.src = imagePieces[i];
-        var div = document.getElementById('img-wrapper');
-        div.appendChild( slicedImage );
-
-    };
-}
->>>>>>> master
