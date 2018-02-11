@@ -27,32 +27,20 @@ app.listen(8000, function(req, res) {
 })
 
 // API STUFF
-function requestMeme(memeInput) {
-    var api_key = '0588d7ce8da18e8';
-    var request_url = 'https://api.imgur.com/3/gallery/search/?q=' + memeInput + ' meme';
-    var req = new XMLHttpRequest();
+
+// function requestMeme(memeInput) {
+//     const GoogleImages = require('google-images');
+ 
+//     const client = new GoogleImages('014316724742280594798:nfjy14mes6c', 'AIzaSyC0Zdeyc2_4_O3v48CgT1bVnHkfQzt6AJc');
     
-    req.onreadystatechange = function() { 
-        if (req.readyState == 4 && req.status == 200) {
-            memeUrl = processMeme(req.responseText);
-        }
-    }
-    req.open('GET', request_url, true); // true for asynchronous     
-    req.setRequestHeader('Authorization', 'Client-ID ' + api_key);
-    req.send(null);
-}
+//     client.search(memeInput + " meme")
+//         .then(images => {
+//             var rand = Math.floor(Math.random() * Math.floor(images.length));
+//             memeUrl = images[rand]["url"];
+//             console.log("rand = " + rand + "\n" + "memeUrl = " + memeUrl);
+//         });
+// }
 
-function processMeme(response_text) {
-    if (response_text == "Not found") {
-        console.log("Imgur album not found.");
-    } else {
-        var json = JSON.parse(response_text);
-        var rand = Math.floor(Math.random() * Math.floor(4));
-
-        if (json["data"][rand]["images"].length != 0) {
-            return json["data"][rand]["images"][0]["link"];
-        } else {
-            return 'http://s.quickmeme.com/img/a8/a8022006b463b5ed9be5a62f1bdbac43b4f3dbd5c6b3bb44707fe5f5e26635b0.jpg';
-        }
-    }
+function requestMeme(memeInput) {
+    memeUrl = "http://i0.kym-cdn.com/photos/images/original/001/102/474/a6c.jpeg";
 }
