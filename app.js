@@ -28,15 +28,19 @@ app.listen(8000, function(req, res) {
 
 // API STUFF
 
-function requestMeme(memeInput) {
-    const GoogleImages = require('google-images');
+// function requestMeme(memeInput) {
+//     const GoogleImages = require('google-images');
  
-    const client = new GoogleImages('014316724742280594798:nfjy14mes6c', 'AIzaSyC0Zdeyc2_4_O3v48CgT1bVnHkfQzt6AJc');
+//     const client = new GoogleImages('014316724742280594798:nfjy14mes6c', 'AIzaSyC0Zdeyc2_4_O3v48CgT1bVnHkfQzt6AJc');
     
-    client.search(memeInput + " meme")
-        .then(images => {
-            var rand = Math.floor(Math.random() * Math.floor(images.length));
-            memeUrl = images[rand]["url"];
-            console.log("rand = " + rand + "\n" + "memeUrl = " + memeUrl);
-        });
+//     client.search(memeInput + " meme")
+//         .then(images => {
+//             var rand = Math.floor(Math.random() * Math.floor(images.length));
+//             memeUrl = images[rand]["url"];
+//             console.log("rand = " + rand + "\n" + "memeUrl = " + memeUrl);
+//         });
+// }
+
+function requestMeme(memeInput) {
+    memeUrl = "http://i0.kym-cdn.com/photos/images/original/001/102/474/a6c.jpeg";
 }
