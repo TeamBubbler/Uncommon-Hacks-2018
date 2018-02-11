@@ -22,8 +22,8 @@ app.post("/meme/", function(req, res) {
     }, 1000);
 });
 
-app.listen(8000, function(req, res) {
-    console.log("Ready for some dank memes on port  " + 8000);
+app.listen(process.env.PORT || 8080, function(req, res) {
+    console.log("Ready for some dank memes on port  " + process.env.PORT);
 })
 
 // API STUFF
