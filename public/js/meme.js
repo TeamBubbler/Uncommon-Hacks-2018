@@ -1,29 +1,24 @@
-var img = new Image();
-var width;
-var height;
-var length = 30;
-var ylength = 20;
-img.src = $("#meme").attr("src");
-img.onload = function() {
-    width = this.width;
-    height = this.height;
-        for (var j = 0; j < length; j++){
-        for (var i = 0; i < length; i++){
-            var left = (-1 * width/length * i).toString() +"px";
-            var top = (-1 * height/ylength * j).toString() +"px";
-            var element = jQuery('<div/>', {
-                    id: i + ""+j,
-                    class: "splitImg",
-                    css: {
-                        "width" : Math.floor(width/length),
-                        "height":Math.floor(height/ylength),
-                        "background-position": left  + " " +  top,
-                        "background-image" : 'url(' + img.src + ')'
-                    }
-                });
-                element.appendTo('#wrapper');
-            $("#wrapper").width(width + (length *2))
+var image = new Image();
+image.onload = cutImageUp;
+image.crossOrigin = "Anonymous";
+image.src = memeUrl;
+
+function cutImageUp() {
+    var numColsToCut = 5;
+    var numRowsToCut = 4;
+    var heightOfOnePiece = image.height/numRowsToCut;
+    var widthOfOnePiece = image.width/numColsToCut;
+    var imagePieces = [];
+    for(var y = 0; y < numRowsToCut; ++y) {
+        for(var x = 0; x < numColsToCut; ++x) {
+            var canvas = document.createElement('canvas');
+            canvas.width = widthOfOnePiece;
+            canvas.height = heightOfOnePiece;
+            var context = canvas.getContext('2d');
+            context.drawImage(image, x * widthOfOnePiece, y * heightOfOnePiece, widthOfOnePiece, heightOfOnePiece, 0, 0, canvas.width, canvas.height);
+            imagePieces.push(canvas.toDataURL());
         }
+<<<<<<< HEAD
 	}
 }
 var synth = new Tone.FMSynth({
@@ -42,3 +37,20 @@ var synth = new Tone.FMSynth({
 }).toMaster();
 
 
+=======
+    }
+
+    for(var i = 0; i < imagePieces.length; i++){
+        if (i % 5 == 0) {
+        var br = document.createElement('BR');
+        var div = document.getElementById('img-wrapper');
+        div.appendChild( br );
+        }
+        var slicedImage = document.createElement('img')
+        slicedImage.src = imagePieces[i];
+        var div = document.getElementById('img-wrapper');
+        div.appendChild( slicedImage );
+
+    };
+}
+>>>>>>> master
