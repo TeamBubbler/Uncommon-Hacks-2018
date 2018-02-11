@@ -26,3 +26,19 @@ img.onload = function() {
         }
 	}
 }
+var synth = new Tone.FMSynth({
+    "modulationIndex" : 12.22,
+    "envelope" : {
+        "attack" : 0.01,
+        "decay" : 0.2
+    },
+    "modulation" : {
+        "type" : "square"
+    },
+    "modulationEnvelope" : {
+        "attack" : 0.2,
+        "decay" : 0.01
+    }
+}).toMaster();
+
+
