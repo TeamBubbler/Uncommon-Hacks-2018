@@ -46,18 +46,46 @@ var synth = new Tone.FMSynth({
     }
 }).toMaster();
 
+var timer = 2;
+
+setInterval(function() {
+    if (timer > 0) {
+        $(".timer").text(timer + "...");
+        timer--;
+    } else if (timer == 0) {
+        $(".timer").text("Go!");  
+    } else {
+        clearInterval();
+    }
+}, 800);
+
 setTimeout(function() {
     var colors = [];
     var images = $('img');
     for(var i = 0; i < images.length; i++) {
+        $(images[i]).addClass("shadow");
         var rgb = getAverageRGB(images[i]);
         colors.push(rgb);
     }
-    console.log(colors);
     for(var i = 0; i < colors.length; i++) {
         synth.triggerAttackRelease(getNote(colors[i].r), 0.1, i*0.2 + 3);
     }
 }, 1000);
+setTimeout(function() {
+    var images = $('img');
+    var i = 0;
+    setInterval(function() {
+        if(i < images.length) {
+            $(images[i]).css({"opacity": "0.5"});
+            if (i > 0) {
+                $(images[i-1]).css({"opacity": "1"});
+            }
+            i++;
+        } else {
+            clearInterval();
+        }
+    }, 200);
+}, 2600);
 //paletteArray = createPalette(myImage, 10); // 2nd argument sets # of colors in palette
 
 function getAverageRGB(imgEl) {
